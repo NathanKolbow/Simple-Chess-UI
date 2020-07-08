@@ -116,8 +116,6 @@ def data_from_fen(FEN):
 	data['en passant'] = rank_file_to_xy(str[3])
 	data['move counts'] = (int(str[4]), int(str[5]))
 
-	print('board: ')
-	print(data['board'])
 	return data
 
 
@@ -215,7 +213,6 @@ def board_mouse_one(event):
 		if moving_piece == 'p' or moving_piece == 'P':
 			if abs(y - moving_from[1]) == 2:
 				curr_data['en passant'] = (moving_from[0], moving_from[1]+1 if moving_piece == 'P' else moving_from[1]-1)
-				print("En passant is now: ", curr_data['en passant'])
 
 		# Move the actual piece (if anything is taken, it's overwritten in this process)
 		set_piece(x, y, moving_piece)
@@ -233,10 +230,8 @@ def board_mouse_one(event):
 				curr_data['castling'] = curr_data['castling'].replace('k', '')
 		# Special case for castling
 		if moving_piece == 'k':
-			print("king move")
 			curr_data['castling'] = curr_data['castling'].replace('k', '').replace('q', '')
 			if abs(moving_from[0] - x) == 2:
-				print("castle")
 				if x == 2:
 					set_piece(0, 7, '')
 					set_piece(3, 7, 'r')
