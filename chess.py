@@ -14,10 +14,6 @@ def run():
 		]
 	]
 
-	printout = [
-		[sg.Output(size=(100,20))],
-	]
-
 	layout = [
 		[sg.Column(board)],
 	]
