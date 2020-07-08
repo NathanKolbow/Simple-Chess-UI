@@ -239,6 +239,11 @@ def board_mouse_one(event):
 					set_piece(5, 7, 'r')
 					set_piece(7, 7, '')
 
+		# Auto-queen any pawns that make it to the last rank
+		if moving_piece == 'p' or moving_piece == 'P':
+			if y == 7 or y == 0:
+				set_piece(x, y, 'q' if moving_piece == 'p' else 'Q')
+
 		# Update whose turn it is
 		curr_data['turn'] = 'b' if curr_data['turn'] == 'w' else 'w'
 
